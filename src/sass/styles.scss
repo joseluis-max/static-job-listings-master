@@ -1,0 +1,33 @@
+@import './media_query';
+@import './mixins';
+@import './variables';
+
+body{
+  font-family: $Spartan;
+  font-size: 15px;
+}
+#header{
+  background-color:$DesaturatedDarkCyan;
+  height: 120px;
+  background-image: url('./images/bg-header-desktop.svg');
+}
+#main{
+  background-color: $LightGrayishCyanBackground;
+}
+#filterbar{
+  background-color:$White;
+
+}
+#filterButton{
+  border: 0px;
+  background-color:$LightGrayishCyanFilterTablets;
+  
+}
+#buttonReset{
+  padding: 0px;
+  border: 0px;
+  background-color: transparent;
+}
+.change-color:hover{
+  fill:$DesaturatedDarkCyan;
+}
