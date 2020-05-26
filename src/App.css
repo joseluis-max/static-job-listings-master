@@ -1,4 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
+@media screen and (max-width: 767px) {
+  #main {
+    width: 100%;
+    padding: 120px 20px !important;
+  }
+
+  #item {
+    display: block !important;
+    position: relative;
+    margin-bottom: 65px !important;
+  }
+
+  #line {
+    display: block !important;
+  }
+
+  #logos {
+    position: absolute;
+    top: -17%;
+  }
+
+  #item-title {
+    display: block;
+    padding: 20px 10px;
+    box-sizing: border-box;
+  }
+
+  #item-body {
+    display: block !important;
+  }
+}
 body {
   font-family: "Spartan", sans-serif;
   font-size: 15px;
@@ -8,6 +39,8 @@ body {
   background-color: #5ba4a4;
   height: 120px;
   background-image: url("./images/bg-header-desktop.svg");
+  padding-top: 100px;
+  position: sticky;
 }
 
 #main {
@@ -16,11 +49,16 @@ body {
 
 #filterbar {
   background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+  border-radius: 5px;
 }
 
 #filterButton {
   border: 0px;
   background-color: #eef6f6;
+  color: #5ba4a4;
 }
 
 #buttonReset {
@@ -29,6 +67,75 @@ body {
   background-color: transparent;
 }
 
-.change-color:hover {
+.change-color {
   fill: #5ba4a4;
+}
+
+.change-color:hover {
+  fill: #2c3a3a;
+}
+
+#clear {
+  background-color: transparent;
+  border: none;
+  padding: 5px 5px;
+  color: #5ba4a4;
+}
+
+#clear:hover {
+  text-decoration: underline;
+}
+
+#item {
+  background-color: #ffffff;
+  display: flex;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+#item:hover {
+  border-left: 5px solid #5ba4a4;
+}
+
+#item-body {
+  display: flex;
+}
+
+#tools {
+  line-height: 50%;
+}
+
+#company {
+  font-size: 0.9em;
+  color: #5ba4a4;
+}
+
+#new_featured {
+  font-size: 0.9em;
+  line-height: 1rem;
+  color: #ffffff;
+}
+
+.languages_tools_buttons {
+  background-color: #effafa;
+  color: #5ba4a4;
+  border: none;
+}
+
+.languages_tools_buttons:hover {
+  background: #5ba4a4;
+  color: #ffffff;
+}
+
+.new_color {
+  background-color: #5ba4a4;
+}
+
+.featured_color {
+  background-color: #2c3a3a;
+}
+
+#line {
+  color: #2c3a3a;
+  display: none;
 }

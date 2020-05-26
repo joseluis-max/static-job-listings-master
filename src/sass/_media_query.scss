@@ -1,0 +1,26 @@
+@media screen and (max-width: 767px) {
+  #main {
+    width: 100%;
+    padding: 120px 20px !important;
+  }
+  #item {
+    display: block !important;
+    position: relative;
+    margin-bottom: 65px !important;
+  }
+  #line {
+    display: block !important;
+  }
+  #logos {
+    position: absolute;
+    top: -17%;
+  }
+  #item-title {
+    display: block;
+    padding: 20px 10px;
+    box-sizing: border-box;
+  }
+  #item-body {
+    display: block !important;
+  }
+}

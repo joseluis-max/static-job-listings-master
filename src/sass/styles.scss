@@ -1,33 +1,93 @@
-@import './media_query';
-@import './mixins';
-@import './variables';
+@import "./media_query";
+@import "./mixins";
+@import "./variables";
 
-body{
+body {
   font-family: $Spartan;
   font-size: 15px;
 }
-#header{
-  background-color:$DesaturatedDarkCyan;
+#header {
+  background-color: $DesaturatedDarkCyan;
   height: 120px;
-  background-image: url('./images/bg-header-desktop.svg');
+  background-image: url("./images/bg-header-desktop.svg");
+  padding-top: 100px;
+  position: sticky;
 }
-#main{
+#main {
   background-color: $LightGrayishCyanBackground;
 }
-#filterbar{
-  background-color:$White;
-
+#filterbar {
+  background-color: $White;
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+  border-radius: 5px;
 }
-#filterButton{
+#filterButton {
   border: 0px;
-  background-color:$LightGrayishCyanFilterTablets;
-  
+  background-color: $LightGrayishCyanFilterTablets;
+  color: $DesaturatedDarkCyan;
 }
-#buttonReset{
+#buttonReset {
   padding: 0px;
   border: 0px;
   background-color: transparent;
 }
-.change-color:hover{
-  fill:$DesaturatedDarkCyan;
+.change-color {
+  fill: $DesaturatedDarkCyan;
+}
+.change-color:hover {
+  fill: $VeryDarkGrayishCyan;
+}
+#clear {
+  background-color: transparent;
+  border: none;
+  padding: 5px 5px;
+  color: $DesaturatedDarkCyan;
+}
+#clear:hover {
+  text-decoration: underline;
+}
+#item {
+  background-color: $White;
+  display: flex;
+  padding: 20px;
+  margin-top: 20px;
+}
+#item:hover {
+  border-left: 5px solid $DesaturatedDarkCyan;
+}
+#item-body {
+  display: flex;
+}
+#tools {
+  line-height: 50%;
+}
+#company {
+  font-size: 0.9em;
+  color: $DesaturatedDarkCyan;
+}
+#new_featured {
+  font-size: 0.9em;
+  line-height: 1rem;
+  color: $White;
+}
+.languages_tools_buttons {
+  background-color: $LightGrayishCyanBackground;
+  color: $DesaturatedDarkCyan;
+  border: none;
+}
+.languages_tools_buttons:hover {
+  background: $DesaturatedDarkCyan;
+  color: $White;
+}
+.new_color {
+  background-color: $DesaturatedDarkCyan;
+}
+.featured_color {
+  background-color: $VeryDarkGrayishCyan;
+}
+#line {
+  color: $VeryDarkGrayishCyan;
+  display: none;
 }
