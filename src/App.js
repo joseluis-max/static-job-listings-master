@@ -35,6 +35,7 @@ class App extends React.Component {
     this.clearfilter = this.clearfilter.bind(this);
   }
   filter(name, n) {
+    let data_plus = []
     let data_filter = [];
     let languages = [];
     let tools = [];
@@ -85,9 +86,16 @@ class App extends React.Component {
       default:
         break;
     }
-
     if (this.state.data.length < data.length) {
-      this.filter_plus(data_filter)
+      for (const s of this.state.data) {
+        for (const d of data_filter) {
+          if(s.id !== d.id){
+            data_plus.push(d)
+          }
+        }
+      }
+      console.log(data_plus)
+      this.filter_plus(data_plus)
       
     } else {
       this.setState({
@@ -96,10 +104,10 @@ class App extends React.Component {
     }
   }
   filter_plus(data,count=0,count_2=0){
-    let data_plus = []
     let state = this.state.data;
     let i = count
     let o = count_2
+    console.log(data)
       if (data[o].id === state[i].id) {
         this.filter_plus(data,0,1)
       } else {
@@ -113,7 +121,10 @@ class App extends React.Component {
   addfilter(e) {
     const name = e.target.innerHTML.toLowerCase();
     this.setState({ [name]: true });
-    if (
+    if(this.state[name]){
+      console.log(' filtro ya agregado')
+    }else{
+      if ( 
       name === "html" ||
       name === "css" ||
       name === "javascript" ||
@@ -139,6 +150,9 @@ class App extends React.Component {
     ) {
       this.filter(name, 1);
     }
+    }
+    
+    
   }
   removefilter(e) {
     let name;
