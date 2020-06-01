@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../images/insure.svg";
 
 export default class Item extends React.Component {
   constructor(props) {
@@ -54,7 +53,7 @@ export default class Item extends React.Component {
       >
         <div id="item-body">
           <div className="mr-4 pt-4">
-            <img src={logo} id="logos" alt="logo" />
+            <img src={this.props.item.logo} id="logos" alt="logo" />
           </div>
           <div className="mr-2" id="item-title">
             <span className="font-smaller" id="company">

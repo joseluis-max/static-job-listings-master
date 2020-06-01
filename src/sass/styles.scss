@@ -9,12 +9,13 @@ body {
 #header {
   background-color: $DesaturatedDarkCyan;
   height: 120px;
-  background-image: url("./images/bg-header-desktop.svg");
+  background-image: url("./bg-header-desktop.svg");
   padding-top: 100px;
   position: sticky;
 }
 #main {
   background-color: $LightGrayishCyanBackground;
+  min-height: 80vh;
 }
 #filterbar {
   background-color: $White;

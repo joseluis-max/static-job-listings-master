@@ -38,13 +38,14 @@ body {
 #header {
   background-color: #5ba4a4;
   height: 120px;
-  background-image: url("./images/bg-header-desktop.svg");
+  background-image: url("./bg-header-desktop.svg");
   padding-top: 100px;
   position: sticky;
 }
 
 #main {
   background-color: #effafa;
+  min-height: 80vh;
 }
 
 #filterbar {

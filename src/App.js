@@ -3,6 +3,7 @@ import "./App.css";
 import data from "./data.json";
 import Item from "./components/item";
 import FilterBar from "./components/filterbar";
+import '../public/images/bg-header-desktop.svg'
 
 class App extends React.Component {
   constructor(props) {
@@ -35,7 +36,6 @@ class App extends React.Component {
     this.clearfilter = this.clearfilter.bind(this);
   }
   filter(name, n) {
-    let data_plus = []
     let data_filter = [];
     let languages = [];
     let tools = [];
@@ -86,34 +86,10 @@ class App extends React.Component {
       default:
         break;
     }
-    if (this.state.data.length < data.length) {
-      for (const s of this.state.data) {
-        for (const d of data_filter) {
-          if(s.id !== d.id){
-            data_plus.push(d)
-          }
-        }
-      }
-      console.log(data_plus)
-      this.filter_plus(data_plus)
-      
-    } else {
+
       this.setState({
         data: data_filter,
       });
-    }
-  }
-  filter_plus(data,count=0,count_2=0){
-    let state = this.state.data;
-    let i = count
-    let o = count_2
-    console.log(data)
-      if (data[o].id === state[i].id) {
-        this.filter_plus(data,0,1)
-      } else {
-        this.state.data_filter.push(data[o])
-        this.setState({data:[...this.state.data,...this.state.data_filter]})
-    }
   }
   handleFilter() {
     this.setState({ filter: true });
@@ -151,8 +127,6 @@ class App extends React.Component {
       this.filter(name, 1);
     }
     }
-    
-    
   }
   removefilter(e) {
     let name;
