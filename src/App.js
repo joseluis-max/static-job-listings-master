@@ -9,7 +9,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: {},
       data: data,
       data_filter: [],
       filter: false,
@@ -82,14 +81,26 @@ class App extends React.Component {
           return (data_filter = languages);
         });
         break;
-
       default:
         break;
     }
-
-      this.setState({
+    if (this.state.data === data) {
+       this.setState({
         data: data_filter,
       });
+    } else {
+      let data = []
+      for (const i of data_filter) {
+       for (const d of this.state.data) {
+         if (i.id === d.id) {
+           data.push(i)
+         }
+       }
+      }
+      this.setState({
+        data: data,
+      });
+    } 
   }
   handleFilter() {
     this.setState({ filter: true });
@@ -97,9 +108,6 @@ class App extends React.Component {
   addfilter(e) {
     const name = e.target.innerHTML.toLowerCase();
     this.setState({ [name]: true });
-    if(this.state[name]){
-      console.log(' filtro ya agregado')
-    }else{
       if ( 
       name === "html" ||
       name === "css" ||
@@ -126,7 +134,6 @@ class App extends React.Component {
     ) {
       this.filter(name, 1);
     }
-    }
   }
   removefilter(e) {
     let name;
@@ -135,13 +142,21 @@ class App extends React.Component {
     } else {
       name = e.target.parentNode.parentNode.name.toLowerCase();
     }
-
-    this.clearfilter();
-    this.setState({ [name]: false, data: data });
+    this.clearfilter()
+    this.setState({ [name]: false });
+    let recal = []
+    let keys = Object.keys(this.state)
+    for (let i = 3; i < keys.length; i++) {
+     let value = keys[i]
+      if (this.state[value] === true) {
+        if (keys[i] !== name) {
+          recal.push(keys[i]) 
+        }
+      }
+    }
   }
   clearfilter() {
     this.setState({
-      history: [],
       data: data,
       data_filter: [],
       filter: false,
