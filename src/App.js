@@ -5,10 +5,19 @@ import Item from "./components/item";
 import FilterBar from "./components/filterbar";
 import '../public/images/bg-header-desktop.svg'
 
+
+let languages = ["html", "css", "javascript", "ruby", "python"];
+let tools = ["sass", "react", "djando", "vue", "ror", "ruby"];
+let level = ["junior", "senior", "midweight"];
+let type = ["frontend", "backend", "fullstack"];
+
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      history: [],
       data: data,
       data_filter: [],
       filter: false,
@@ -34,106 +43,107 @@ class App extends React.Component {
     this.removefilter = this.removefilter.bind(this);
     this.clearfilter = this.clearfilter.bind(this);
   }
-  filter(name, n) {
-    let data_filter = [];
-    let languages = [];
-    let tools = [];
-    let level = [];
-    let role = [];
-    switch (n) {
-      case 1:
-        data.map((d) => {
-          if (d.role.toLowerCase() === name) {
-            role.push(d);
-          }
-          return (data_filter = role);
-        });
-        break;
-      case 2:
-        data.map((d) => {
-          if (d.level.toLowerCase() === name) {
-            level.push(d);
-          }
-          return (data_filter = level);
-        });
-        break;
-      case 3:
-        data.map((d) => {
-          d.tools.map((t) => {
-            if (t.toLowerCase() === name) {
-              tools.push(d);
+  refilter(name) {
+    for (const d of data) {
+      if (d.languages.includes(name.toUpperCase())) {
+        this.state.data_filter.push(d)
+      } else {
+        if (d.tools.includes(name.toUpperCase())) {
+          this.state.data_filter.push(d)
+        } else {
+          if (d.role === name.toUpperCase()) {
+            this.state.data_filter.push(d)
+          } else {
+            if (d.level === name.toUpperCase()) {
+              this.state.data_filter.push(d)
             }
-            return tools;
-          });
-
-          return (data_filter = tools);
-        });
-        break;
-      case 4:
-        data.map((d) => {
-          d.languages.map((l) => {
-            if (l.toLowerCase() === name) {
-              languages.push(d);
-            }
-            return languages;
-          });
-
-          return (data_filter = languages);
-        });
-        break;
-      default:
-        break;
+          }
+        }
+      }
     }
     if (this.state.data === data) {
-       this.setState({
-        data: data_filter,
+      this.setState({
+        data: this.state.data_filter,
       });
+      if (!this.state.history.includes(name)) {
+        this.state.history.push(name)
+      }
     } else {
-      let data = []
-      for (const i of data_filter) {
-       for (const d of this.state.data) {
-         if (i.id === d.id) {
-           data.push(i)
-         }
-       }
+      let preData = [...this.state.data, ...this.state.data_filter];
+      let data = [...new Set(preData)];
+      //   let data = []
+      //   for (const i of this.state.data_filter) {
+      //     for (const d of this.state.data) {
+      //       if (i.id === d.id) {
+      //         data.push(i)
+      //       }
+      //     }
+      // }
+      if (!this.state.history.includes(name)) {
+        this.state.history.push(name)
       }
       this.setState({
         data: data,
       });
-    } 
+    }
+  }
+  filter(name) {
+    this.setState({ data_filter: [] })
+    for (const d of data) {
+      if (d.languages.includes(name.toUpperCase())) {
+        this.state.data_filter.push(d)
+      } else {
+        if (d.tools.includes(name.toUpperCase())) {
+          this.state.data_filter.push(d)
+        } else {
+          if (d.role === name.toUpperCase()) {
+            this.state.data_filter.push(d)
+          } else {
+            if (d.level === name.toUpperCase()) {
+              this.state.data_filter.push(d)
+            }
+          }
+        }
+      }
+      if (this.state.data === data) {
+        this.setState({
+          data: this.state.data_filter,
+        });
+        if (!this.state.history.includes(name)) {
+          this.state.history.push(name)
+        }
+      } else {
+        // let preData = [...this.state.data, ...data_filter];
+        // let data = [...new Set(preData)];
+        let data = []
+        for (const i of this.state.data_filter) {
+          for (const d of this.state.data) {
+            if (i.id === d.id) {
+              data.push(i)
+            }
+          }
+        }
+        if (!this.state.history.includes(name)) {
+          this.state.history.push(name)
+        }
+        this.setState({
+          data: data,
+        });
+      }
+    }
   }
   handleFilter() {
     this.setState({ filter: true });
   }
   addfilter(e) {
-    const name = e.target.innerHTML.toLowerCase();
-    this.setState({ [name]: true });
-      if ( 
-      name === "html" ||
-      name === "css" ||
-      name === "javascript" ||
-      name === "ruby" ||
-      name === "python"
-    ) {
-      this.filter(name, 4);
-    } else if (
-      name === "sass" ||
-      name === "react" ||
-      name === "djando" ||
-      name === "vue" ||
-      name === "ror" ||
-      name === "ruby"
-    ) {
-      this.filter(name, 3);
-    } else if (name === "junior" || name === "senior" || name === "midweight") {
-      this.filter(name, 2);
-    } else if (
-      name === "frontend" ||
-      name === "backend" ||
-      name === "fullstack"
-    ) {
-      this.filter(name, 1);
+    let name;
+    if (languages.includes(e) === true || tools.includes(e) === true || level.includes(e) === true || type.includes(e) === true) {
+      name = e
+    } else {
+      name = e.target.innerHTML.toLowerCase();
     }
+    this.setState({ [name]: true });
+    this.filter(name)
   }
   removefilter(e) {
     let name;
@@ -142,21 +152,20 @@ class App extends React.Component {
     } else {
       name = e.target.parentNode.parentNode.name.toLowerCase();
     }
-    this.clearfilter()
     this.setState({ [name]: false });
-    let recal = []
-    let keys = Object.keys(this.state)
-    for (let i = 3; i < keys.length; i++) {
-     let value = keys[i]
-      if (this.state[value] === true) {
-        if (keys[i] !== name) {
-          recal.push(keys[i]) 
-        }
+    this.setState({ data: [] })
+    this.state.history.splice(this.state.history.indexOf(name), this.state.history.indexOf(name) + 1)
+    if (this.state.history.length > 0) {
+      for (const name of this.state.history) {
+        this.refilter(name)
       }
+    } else {
+      this.clearfilter()
     }
   }
   clearfilter() {
     this.setState({
+      history: [],
       data: data,
       data_filter: [],
       filter: false,
