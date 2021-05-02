@@ -12,19 +12,17 @@ export default class Item extends React.Component {
   render() {
     const languages = this.props.item.languages.map((l) => (
       <button
-        onClick={this.handleClick}
-        key={l}
-        className="btn btn-primary languages_tools_buttons mb-2 mr-2"
-      >
+          onClick={this.handleClick}
+          key={l}
+          className="btn btn-primary languages_tools_buttons mb-2 mr-2">
         {l}
       </button>
     ));
     const tools = this.props.item.tools.map((t) => (
       <button
-        onClick={this.handleClick}
-        key={t}
-        className="btn btn-primary languages_tools_buttons mb-2 mr-2"
-      >
+          onClick={this.handleClick}
+          key={t}
+          className="btn btn-primary languages_tools_buttons mb-2 mr-2">
         {t}
       </button>
     ));

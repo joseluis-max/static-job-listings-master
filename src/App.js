@@ -7,13 +7,6 @@ import '../public/images/bg-header-desktop.svg'
 
 
 
-const languages = ["html", "css", "javascript", "ruby", "python"];
-const tools = ["sass", "react", "djando", "vue", "ror", "ruby"];
-const level = ["junior", "senior", "midweight"];
-const type = ["frontend", "backend", "fullstack"];
-
-
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,22 +15,22 @@ class App extends React.Component {
       data: data,
       data_filter: [],
       filter: false,
-      javascript: false,
-      react: false,
-      css: false,
-      html: false,
-      python: false,
-      junior: false,
-      frontend: false,
-      fullstack: false,
-      midweight: false,
-      sass: false,
-      ruby: false,
-      ror: false,
-      backend: false,
-      vue: false,
-      django: false,
-      senior: false,
+      JavaScript: false,
+      React: false,
+      CSS: false,
+      HTML: false,
+      Python: false,
+      Junior: false,
+      Frontend: false,
+      FullStack: false,
+      Midweight: false,
+      Sass: false,
+      Ruby: false,
+      RoR: false,
+      Backend: false,
+      Vue: false,
+      Django: false,
+      Senior: false,
     };
     this.handleFilter = this.handleFilter.bind(this);
     this.addfilter = this.addfilter.bind(this);
@@ -46,16 +39,16 @@ class App extends React.Component {
   }
   refilter(name) {
     for (const d of data) {
-      if (d.languages.includes(name.toUpperCase())) {
+      if (d.languages.includes(name)) {
         this.state.data_filter.push(d)
       } else {
-        if (d.tools.includes(name.toUpperCase())) {
+        if (d.tools.includes(name)) {
           this.state.data_filter.push(d)
         } else {
-          if (d.role === name.toUpperCase()) {
+          if (d.role === name) {
             this.state.data_filter.push(d)
           } else {
-            if (d.level === name.toUpperCase()) {
+            if (d.level === name) {
               this.state.data_filter.push(d)
             }
           }
@@ -83,16 +76,16 @@ class App extends React.Component {
   filter(name) {
     this.setState({ data_filter: [] })
     for (const d of data) {
-      if (d.languages.includes(name.toUpperCase())) {
+      if (d.languages.includes(name)) {
         this.state.data_filter.push(d)
       } else {
-        if (d.tools.includes(name.toUpperCase())) {
+        if (d.tools.includes(name)) {
           this.state.data_filter.push(d)
         } else {
-          if (d.role === name.toUpperCase()) {
+          if (d.role === name) {
             this.state.data_filter.push(d)
           } else {
-            if (d.level === name.toUpperCase()) {
+            if (d.level === name) {
               this.state.data_filter.push(d)
             }
           }
@@ -127,21 +120,17 @@ class App extends React.Component {
     this.setState({ filter: true });
   }
   addfilter(e) {
-    let name;
-    if (languages.includes(e) === true || tools.includes(e) === true || level.includes(e) === true || type.includes(e) === true) {
-      name = e
-    } else {
-      name = e.target.innerHTML.toLowerCase();
-    }
+    let name = e.target.innerHTML;
+
     this.setState({ [name]: true });
     this.filter(name)
   }
   removefilter(e) {
     let name;
     if (e.target.nodeName === "svg") {
-      name = e.target.parentNode.name.toLowerCase();
+      name = e.target.parentNode.name;
     } else {
-      name = e.target.parentNode.parentNode.name.toLowerCase();
+      name = e.target.parentNode.parentNode.name;
     }
     this.setState({ [name]: false });
     this.setState({ data: [] })
@@ -179,7 +168,7 @@ class App extends React.Component {
     });
   }
   render() {
-    const d = this.state.data.map((d) => {
+    const items = this.state.data.map((d) => {
       return (
         <Item
           filter={this.handleFilter}
@@ -201,7 +190,7 @@ class App extends React.Component {
           ) : null}
         </header>
         <div className="container-fluid pt-5" id="main">
-          {d}
+          {items}
         </div>
       </div>
     );

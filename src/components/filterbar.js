@@ -65,52 +65,52 @@ export default class FilterBar extends React.Component {
         className="container d-flex justify-content-end flex-wrap"
         id="filterbar"
       >
-        {this.props.data.javascript ? (
+        {this.props.data.JavaScript ? (
           <Filter name="JavaScript" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.css ? (
+        {this.props.data.CSS ? (
           <Filter name="CSS" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.html ? (
+        {this.props.data.HTML ? (
           <Filter name="HTML" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.react ? (
+        {this.props.data.React ? (
           <Filter name="React" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.python ? (
+        {this.props.data.Python ? (
           <Filter name="Python" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.junior ? (
+        {this.props.data.Junior ? (
           <Filter name="Junior" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.frontend ? (
+        {this.props.data.Frontend ? (
           <Filter name="Frontend" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.fullstack ? (
+        {this.props.data.FullStack ? (
           <Filter name="Fullstack" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.midweight ? (
+        {this.props.data.Midweight ? (
           <Filter name="Midweight" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.sass ? (
+        {this.props.data.Sass ? (
           <Filter name="Sass" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.ruby ? (
+        {this.props.data.Ruby ? (
           <Filter name="Ruby" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.ror ? (
+        {this.props.data.RoR ? (
           <Filter name="RoR" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.backend ? (
+        {this.props.data.Backend ? (
           <Filter name="backend" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.vue ? (
+        {this.props.data.Vue ? (
           <Filter name="Vue" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.django ? (
+        {this.props.data.Django ? (
           <Filter name="Django" removefilter={this.props.removefilter} />
         ) : null}
-        {this.props.data.senior ? (
+        {this.props.data.Senior ? (
           <Filter name="Senior" removefilter={this.props.removefilter} />
         ) : null}
         <div>
