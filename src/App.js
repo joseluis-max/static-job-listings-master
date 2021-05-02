@@ -6,10 +6,11 @@ import FilterBar from "./components/filterbar";
 import '../public/images/bg-header-desktop.svg'
 
 
-let languages = ["html", "css", "javascript", "ruby", "python"];
-let tools = ["sass", "react", "djando", "vue", "ror", "ruby"];
-let level = ["junior", "senior", "midweight"];
-let type = ["frontend", "backend", "fullstack"];
+
+const languages = ["html", "css", "javascript", "ruby", "python"];
+const tools = ["sass", "react", "djando", "vue", "ror", "ruby"];
+const level = ["junior", "senior", "midweight"];
+const type = ["frontend", "backend", "fullstack"];
 
 
 
@@ -71,14 +72,6 @@ class App extends React.Component {
     } else {
       let preData = [...this.state.data, ...this.state.data_filter];
       let data = [...new Set(preData)];
-      //   let data = []
-      //   for (const i of this.state.data_filter) {
-      //     for (const d of this.state.data) {
-      //       if (i.id === d.id) {
-      //         data.push(i)
-      //       }
-      //     }
-      // }
       if (!this.state.history.includes(name)) {
         this.state.history.push(name)
       }
@@ -113,8 +106,6 @@ class App extends React.Component {
           this.state.history.push(name)
         }
       } else {
-        // let preData = [...this.state.data, ...data_filter];
-        // let data = [...new Set(preData)];
         let data = []
         for (const i of this.state.data_filter) {
           for (const d of this.state.data) {
@@ -216,5 +207,6 @@ class App extends React.Component {
     );
   }
 }
+
 
 export default App;

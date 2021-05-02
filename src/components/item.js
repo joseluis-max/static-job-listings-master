@@ -3,10 +3,8 @@ import React from "react";
 export default class Item extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
     this.handleClick = this.handleClick.bind(this);
   }
-  componentDidMount() {}
   handleClick(e) {
     this.props.addfilter(e);
     this.props.filter();

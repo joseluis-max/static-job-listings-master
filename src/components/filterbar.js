@@ -3,7 +3,6 @@ import React from "react";
 class FilterReset extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
     this.handleclick = this.handleclick.bind(this);
   }
   handleclick(e) {
